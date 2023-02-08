@@ -90,4 +90,4 @@ But also in non-interactive mode: (like the Shell project in C)
 
 All tests should also pass in non-interactive mode: $ echo "python3 -m unittest discover tests" | bash
 
-![IMG!](https://s3.amazonaws.com/alx-intranet.hbtn.io/uploads/medias/2018/6/815046647d23428a14ca.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUSBVO6H7D%2F20230208%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230208T181751Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=038f6d1d37bf02a1eb0254aedaac09a33c94b99dfe4cef7fa21bc01487c96dab)
+![IMG](https://s3.amazonaws.com/alx-intranet.hbtn.io/uploads/medias/2018/6/815046647d23428a14ca.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUSBVO6H7D/20230208/us-east-1/s3/aws4_request&X-Amz-Date=20230208T181751Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=038f6d1d37bf02a1eb0254aedaac09a33c94b99dfe4cef7fa21bc01487c96dab)
