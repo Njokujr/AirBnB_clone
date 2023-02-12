@@ -170,10 +170,10 @@ class TestBaseModel_to_dict(unittest.TestCase):
         bm.id = "123456"
         bm.created_at = bm.updated_at = dt
         tdict = {
-            'id': '123456',
-            '__class__': 'BaseModel',
-            'created_at': dt.isoformat(),
-            'updated_at': dt.isoformat()
+            "id": "123456",
+            "__class__": "BaseModel",
+            "created_at": dt.isoformat(),
+            "updated_at": dt.isoformat(),
         }
         self.assertDictEqual(bm.to_dict(), tdict)
 
