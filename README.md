@@ -24,9 +24,9 @@ This team project is part of the ALX School Full-Stack Software Engineer program
 
 USAGE:
 
-|COMMAND  |         EXAMPLE      |
-| ------- | -------------------- |
-
+|COMMAND               |         EXAMPLE      |
+| --------------       | -------------------- |
+ Run the console                ./console.py
     
 
 # LEARNING OBJECTIVES
