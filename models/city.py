@@ -4,11 +4,18 @@ from models.base_model import BaseModel
 
 
 class City(BaseModel):
-    """Represent a city.
+    """City class inherits from BaseModel
     Attributes:
-        state_id (str): The state id.
-        name (str): The name of the city.
+        name (str): Public class attribute for City's name
+        state_id (str): Public class attribute for City's state_id
     """
-
-    state_id = ""
     name = ""
+    state_id = ""
+
+    def __init__(self, *args, **kwargs):
+        """init method for City class
+        Attributes:
+            args (list): The list with arguments
+            kwargs (dict): A dictionary with arguments
+        """
+        super().__init__(*args, **kwargs)
