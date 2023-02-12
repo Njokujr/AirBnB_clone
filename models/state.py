@@ -6,14 +6,7 @@ from models.base_model import BaseModel
 class State(BaseModel):
     """Represent a state.
     Attributes:
-        name (str): Public class attribute for State's name
+        name (str): The name of the state.
     """
-    name = ""
 
-    def __init__(self, *args, **kwargs):
-        """init method for State class
-        Attributes:
-            args (list): The list with arguments
-            kwargs (dict): A dictionary with arguments
-        """
-        super().__init__(*args, **kwargs)
+    name = ""
