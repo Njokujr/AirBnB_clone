@@ -1,6 +1,7 @@
 # AirBnB - The console
 
-![Finalprod!](C:\Users\DIDI\Desktop\AirBnB_clone\da2584da58f1d99a72f0a4d8d22c1e485468f941.png)
+![Finalprod](da2584da58f1d99a72f0a4d8d22c1e485468f941.png)
+
 # [__ABOUT PROJECT__]
 
 DESCRIPTION
