@@ -37,6 +37,7 @@ class Test_Review(unittest.TestCase):
         what the name of the method reads.
         """
         from time import sleep
+
         user1 = Review()
         sleep(2)
         user1.save()
@@ -48,8 +49,9 @@ class Test_Review(unittest.TestCase):
         what the name of the method reads.
         """
         user1 = Review()
-        string = "[{}] ({}) {}".format(user1.__class__.__name__,
-                                       user1.id, user1.__dict__)
+        string = "[{}] ({}) {}".format(
+            user1.__class__.__name__, user1.id, user1.__dict__
+        )
         self.assertEqual(user1.__str__(), string)
 
     def test_instance_dictionary(self):

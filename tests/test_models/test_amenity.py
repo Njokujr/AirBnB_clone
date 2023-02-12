@@ -37,6 +37,7 @@ class Test_Amenity(unittest.TestCase):
         save method is working as expected.
         """
         from time import sleep
+
         user1 = Amenity()
         sleep(2)
         user1.save()
@@ -48,8 +49,9 @@ class Test_Amenity(unittest.TestCase):
         string representation is presented as required.
         """
         user1 = Amenity()
-        string = "[{}] ({}) {}".format(user1.__class__.__name__,
-                                       user1.id, user1.__dict__)
+        string = "[{}] ({}) {}".format(
+            user1.__class__.__name__, user1.id, user1.__dict__
+        )
         self.assertEqual(user1.__str__(), string)
 
     def test_instance_dictionary(self):

@@ -13,6 +13,7 @@ class User(BaseModel):
     + ``first_name``: string - empty string
     + ``last_name``: string - empty string
     """
+
     email = str()
     password = str()
     first_name = str()

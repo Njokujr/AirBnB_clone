@@ -17,9 +17,9 @@ from models.engine.file_storage import FileStorage
 
 class HBNBCommand(cmd.Cmd):
     """Creates the command interpreter class"""
+
     prompt = "(hbnb) "
-    valid_classes = ['BaseModel', 'User', 'State', 'City',
-                     'Amenity', 'Place', 'Review']
+    valid_classes = ["BaseModel", "User", "State", "City", "Amenity", "Place", "Review"]
 
     # Basic instance methods
     def emptyline(self):
@@ -169,9 +169,9 @@ class HBNBCommand(cmd.Cmd):
                 obj = objs[key]
                 try:
                     Type = type(obj.__dict__[argv[2]])
-                    obj.__dict__[argv[2]] = Type(argv[3].strip("\""))
+                    obj.__dict__[argv[2]] = Type(argv[3].strip('"'))
                 except KeyError:
-                    obj.__dict__[argv[2]] = argv[3].strip("\"")
+                    obj.__dict__[argv[2]] = argv[3].strip('"')
                 obj.save()
             except KeyError:
                 print("** no instance found **")
@@ -188,7 +188,7 @@ class HBNBCommand(cmd.Cmd):
         + <class name>.update(<id>, <attribute name>, <attribute value>)
         + <class name>.update(<id>, <dictionary representation>)
         """
-        lone_commands = ['all', 'quit', 'EOF', 'help']
+        lone_commands = ["all", "quit", "EOF", "help"]
         argv = line.split()
         matched = re.search(r"\w+\.\w+\(", line)
 
@@ -205,15 +205,16 @@ class HBNBCommand(cmd.Cmd):
         if matched:
             _class, argv = line.split(".", 1)  # ['class', 'command(args)']
             cmd, argv = argv.split("(", 1)  # ['command', 'args)']
-            argv = argv.replace(")", '')  # 'args)' -> 'args'
+            argv = argv.replace(")", "")  # 'args)' -> 'args'
 
             matched = re.search(r"{.+}", argv)  # checking for dict definition
             if matched:  # if dictionary exists in arguements
                 objs = storage.all()
                 import json
+
                 obj_id, argv_dict = argv.split(", ", 1)  # ['<id>', '<dict>']
-                argv_dict = argv_dict.replace("'", "\"")
-                obj_id = obj_id.replace("\"", "")
+                argv_dict = argv_dict.replace("'", '"')
+                obj_id = obj_id.replace('"', "")
                 argv_dict = json.loads(argv_dict)
                 key = "{}.{}".format(_class, obj_id)
                 try:
@@ -233,12 +234,12 @@ class HBNBCommand(cmd.Cmd):
                     if obj.__class__.__name__ == _class:
                         count = count + 1
                 print(count)
-                line = ''
+                line = ""
                 return line, line, line
             return cmd, _class + " " + " ".join(argv.split(", ")), line
 
         return argv[0], " ".join(argv[1:]), line
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     HBNBCommand().cmdloop()

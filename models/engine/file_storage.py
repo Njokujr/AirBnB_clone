@@ -15,6 +15,7 @@ class FileStorage:
     + ``__objects``: dictionary - empty but will store all objects
       by ``<class name>.id``.
     """
+
     __file_path = "file.json"
     __objects = {}
 
@@ -27,6 +28,7 @@ class FileStorage:
         """Sets in ``__objects`` the ``obj`` with key
         ``<obj class name>.id``"""
         from models.base_model import BaseModel
+
         if obj and isinstance(obj, BaseModel):
             key = "{}.{}".format(obj.__class__.__name__, obj.id)
             self.__objects.update({key: obj})
@@ -45,7 +47,6 @@ class FileStorage:
         exception should be raised."""
         try:
             with open(self.__file_path, "r", encoding="utf-8") as fi:
-
                 # import statements
                 from models.base_model import BaseModel
                 from models.user import User

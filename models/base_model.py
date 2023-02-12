@@ -22,7 +22,7 @@ class BaseModel:
         """
 
         if len(kwargs) != 0:
-            kwargs.pop('__class__', None)
+            kwargs.pop("__class__", None)
             for key, value in kwargs.items():
                 if key in ["created_at", "updated_at"]:
                     value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
@@ -38,8 +38,7 @@ class BaseModel:
         """
         Return the string representation of an object.
         """
-        return "[{}] ({}) {}".format(self.__class__.__name__, self.id,
-                                     self.__dict__)
+        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
 
     def save(self):
         """

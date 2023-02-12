@@ -11,4 +11,5 @@ class Amenity(BaseModel):
     class attributes:
     + `name`: string - empty string
     """
+
     name = str()

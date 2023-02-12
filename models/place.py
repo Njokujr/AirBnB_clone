@@ -13,6 +13,7 @@ class Place(BaseModel):
     number_bathrooms, max_guest, price_by_night,
     latitude, longitude, amenity_ids.
     """
+
     city_id = str()
     user_id = str()
     name = str()
