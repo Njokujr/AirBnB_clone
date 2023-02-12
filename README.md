@@ -1,6 +1,6 @@
 # AirBnB - The console
 
-![Finalprod!](C:\Users\DIDI\Desktop\AirBnB_clone\images\da2584da58f1d99a72f0a4d8d22c1e485468f941.png)
+![Finalprod!](images\da2584da58f1d99a72f0a4d8d22c1e485468f941.png)
 # [__ABOUT PROJECT__]
 
 DESCRIPTION
@@ -24,8 +24,9 @@ This team project is part of the ALX School Full-Stack Software Engineer program
 
 USAGE:
 
-|COMMAND |         EXAMPLE      |
- ------- | -------------------- |
+|COMMAND  |         EXAMPLE      |
+| ------- | -------------------- |
+
     
 
 # LEARNING OBJECTIVES
@@ -99,4 +100,4 @@ But also in non-interactive mode: (like the Shell project in C)
 
 All tests should also pass in non-interactive mode: $ echo "python3 -m unittest discover tests" | bash
 
-![IMG](C:\Users\DIDI\Desktop\AirBnB_clone\images\815046647d23428a14ca.png)
+![IMG](images\815046647d23428a14ca.png)
