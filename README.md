@@ -1,6 +1,11 @@
-# AirBnB
+# AirBnB - The console
 
+![Finalprod!](https://s3.amazonaws.com/alx-intranet.hbtn.io/uploads/medias/2020/9/fe2e3e7701dec72ce612472dab9bb55fe0e9f6d4.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUSBVO6H7D%2F20230211%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230211T235650Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=4ad315de6ef31602e4c86f4c9de05f59a3539c9be2e78ff2e8f95f4fc4041804)
 # [__ABOUT PROJECT__]
+
+DESCRIPTION
+This team project is part of the ALX School Full-Stack Software Engineer program. It's the first step towards building a first full web application: an AirBnB clone. This first step consists of a custom command-line interface for data management, and the base classes for the storage of this data. Console commands allow the user to create, update, and destroy objects, as well as manage file storage. Using a system of JSON serialization/deserialization, storage is persistent between sessions.
+
 
     **THE_CONSOLE**
     In this directory you will find a implementation of a AirBnB clone.
@@ -17,6 +22,10 @@
         *Update attributes of an object
         *Destroy an object
 
+USAGE:
+
+|COMMAND |         EXAMPLE      |
+ ------- | -------------------- |
     
 
 # LEARNING OBJECTIVES
