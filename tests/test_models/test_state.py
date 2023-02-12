@@ -27,7 +27,6 @@ class TestState(unittest.TestCase):
         try:
             os.remove("file.json")
         except BaseException:
-
             pass
 
     # Functionality
@@ -70,6 +69,7 @@ class TestState(unittest.TestCase):
         self.assertEqual(dict, type(ClassDict))
         self.assertIsInstance(ClassDict["created_at"], str)
         self.assertIsInstance(ClassDict["updated_at"], str)
+
 
 if __name__ == "__main__":
     unittest.main()

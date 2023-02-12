@@ -13,8 +13,8 @@ class BaseModel:
     """
     Instantiation of class BaseModel
     """
-    def __init__(self, *args, **kwargs):
 
+    def __init__(self, *args, **kwargs):
         if kwargs:
             for key, value in kwargs.items():
                 if key == "created_at" or key == "updated_at":
@@ -30,9 +30,7 @@ class BaseModel:
         """
         Method returns string representation
         """
-        return "[{}] ({}) {}".format(self.__class__.__name__,
-                                     self.id,
-                                     self.__dict__)
+        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
 
     def save(self):
         """
@@ -46,8 +44,8 @@ class BaseModel:
         Method to return a dict containing all key/value of __dict__ instance
         """
         dic = dict(**self.__dict__)
-        dic['__class__'] = str(type(self).__name__)
-        dic['created_at'] = self.created_at.isoformat()
-        dic['updated_at'] = self.updated_at.isoformat()
+        dic["__class__"] = str(type(self).__name__)
+        dic["created_at"] = self.created_at.isoformat()
+        dic["updated_at"] = self.updated_at.isoformat()
 
-        return (dic)
+        return dic

@@ -18,6 +18,7 @@ class FileStorage:
     """
     serializes instances to a JSON file
     """
+
     __file_path = "file.json"
     __objects = dict()
 
@@ -32,8 +33,7 @@ class FileStorage:
         Sets in __object with key id
         """
         if obj:
-            self.__objects["{}.{}".format(str(type(obj).__name__),
-                                          obj.id)] = obj
+            self.__objects["{}.{}".format(str(type(obj).__name__), obj.id)] = obj
 
     def save(self):
         """

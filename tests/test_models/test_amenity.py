@@ -71,5 +71,6 @@ class TestAmenity(unittest.TestCase):
         self.assertIsInstance(ClassDict["updated_at"], str)
         self.assertFalse("ClassDict" in dir(self.inst))
 
+
 if __name__ == "__main__":
     unittest.main()

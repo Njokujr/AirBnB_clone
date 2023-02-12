@@ -45,7 +45,7 @@ class TestPlace(unittest.TestCase):
         self.assertEqual(float, type(self.inst.longitude))
         self.assertEqual(list, type(self.inst.amenity_ids))
 
-   # Documentation
+    # Documentation
     def test_ModuleDocstring(self):
         """Testing the documentation of the module"""
         self.assertIsNotNone(Place.__doc__)
@@ -89,6 +89,7 @@ class TestPlace(unittest.TestCase):
         self.assertEqual(dict, type(ClassDict))
         self.assertIsInstance(ClassDict["created_at"], str)
         self.assertIsInstance(ClassDict["updated_at"], str)
+
 
 if __name__ == "__main__":
     unittest.main()

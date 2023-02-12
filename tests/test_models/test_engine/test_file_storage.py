@@ -62,5 +62,6 @@ class TestFileStorage(unittest.TestCase):
         self.assertTrue(hasattr(FileStorage, "__str__"))
         self.assertTrue(hasattr(FileStorage, "save"))
 
+
 if __name__ == "__main__":
     unittest.main()

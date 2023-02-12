@@ -54,12 +54,10 @@ class TestBaseModel(unittest.TestCase):
         In = BaseModel()
         DIn = self.inst.to_dict()
         self.assertIsInstance(self.inst, BaseModel)
-        self.assertEqual(DIn['__class__'], "BaseModel")
-        self.assertEqual(DIn['created_at'],
-                         self.inst.created_at.isoformat())
-        self.assertEqual(DIn['updated_at'],
-                         self.inst.updated_at.isoformat())
-        self.assertEqual(DIn['id'], self.inst.id)
+        self.assertEqual(DIn["__class__"], "BaseModel")
+        self.assertEqual(DIn["created_at"], self.inst.created_at.isoformat())
+        self.assertEqual(DIn["updated_at"], self.inst.updated_at.isoformat())
+        self.assertEqual(DIn["id"], self.inst.id)
         In.save()
 
     def test_Types(self):
@@ -88,6 +86,7 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(type(ClassDict), dict)
         self.assertIsInstance(ClassDict["created_at"], str)
         self.assertIsInstance(ClassDict["updated_at"], str)
+
 
 if __name__ == "__main__":
     unittest.main()

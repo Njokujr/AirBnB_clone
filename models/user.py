@@ -9,6 +9,7 @@ class User(BaseModel):
     """
     rep of user
     """
+
     email = ""
     password = ""
     first_name = ""

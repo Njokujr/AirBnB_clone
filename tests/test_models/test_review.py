@@ -72,5 +72,6 @@ class TestReview(unittest.TestCase):
         self.assertIsInstance(ClassDict["created_at"], str)
         self.assertIsInstance(ClassDict["updated_at"], str)
 
+
 if __name__ == "__main__":
     unittest.main()
