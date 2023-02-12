@@ -26,7 +26,7 @@ USAGE:
 
 |COMMAND               |         EXAMPLE      |
 | --------------       | -------------------- |
- Run the console                ./console.py
+ Run the console       |        ./console.py
     
 
 # LEARNING OBJECTIVES
