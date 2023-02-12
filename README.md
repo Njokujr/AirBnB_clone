@@ -1,6 +1,6 @@
 # AirBnB - The console
 
-![Finalprod](https://s3.amazonaws.com/alx-intranet.hbtn.io/uploads/medias/2020/9/da2584da58f1d99a72f0a4d8d22c1e485468f941.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUSBVO6H7D%2F20230211%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230211T235650Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=c605f0795d12bd6c3f6aa49f7def1050a6f7a576e091ce2fcf5ca8c1a52293b1)
+![Finalprod](prod.png)
 
 # [__ABOUT PROJECT__]
 
@@ -109,4 +109,3 @@ But also in non-interactive mode: (like the Shell project in C)
 
 All tests should also pass in non-interactive mode: $ echo "python3 -m unittest discover tests" | bash
 
-![IMG](C:\Users\DIDI\Desktop\AirBnB_clone\png\815046647d23428a14ca.png)
