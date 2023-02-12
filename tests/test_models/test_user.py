@@ -1,80 +1,107 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
-Module of the User unittest
+A unit test module for testing ``models/user.py`` module.
 """
 
 import unittest
-from models.base_model import BaseModel
-from datetime import datetime
-import os
 from models.user import User
+from datetime import datetime
 
 
-class TestUser(unittest.TestCase):
+class Test_User(unittest.TestCase):
     """
-    Test of the User class
+    Test the basic features of the BaseModel class.
     """
 
-    # Specific set up of the unittest
-    def setUp(self):
-        """Instance of the class"""
-        self.inst = User()
+    def test_instance_uuid_is_unique(self):
+        """
+        This method of this test class tests for exactly
+        what the name of the method reads.
+        """
+        user1 = User()
+        user2 = User()
+        self.assertNotEqual(user1.id, user2.id)
 
-    def tearDown(self):
-        """Deleting of the instance with the proper file"""
-        del self.inst
+    def test_instance_created_at_is_str(self):
+        """
+        This method of this test class tests for exactly
+        what the name of the method reads.
+        """
+        user1 = User()
+        self.assertEqual(type(user1.created_at), datetime)
+        self.assertEqual(type(user1.updated_at), datetime)
 
-        try:
-            os.remove("file.json")
-        except BaseException:
-            pass
+    def test_save_method(self):
+        """
+        This method of this test class tests for exactly
+        what the name of the method reads.
+        """
+        from time import sleep
+        user1 = User()
+        sleep(2)
+        user1.save()
+        self.assertNotEqual(user1.created_at, user1.updated_at)
 
-    # Functionality
-    def test_AtributtesClass(self):
-        self.assertEqual(str, type(self.inst.email))
-        self.assertEqual(str, type(self.inst.password))
-        self.assertEqual(str, type(self.inst.first_name))
-        self.assertEqual(str, type(self.inst.last_name))
+    def test_string_representation(self):
+        """
+        This method of this test class tests for exactly
+        what the name of the method reads.
+        """
+        user1 = User()
+        string = "[{}] ({}) {}".format(user1.__class__.__name__,
+                                       user1.id, user1.__dict__)
+        self.assertEqual(user1.__str__(), string)
 
-    # Documentation
+    def test_instance_dictionary(self):
+        """
+        This method of this test class tests for exactly
+        what the name of the method reads.
+        """
+        user1 = User()
+        user1.email = "uthman@gmail.com"
+        user1.first_name = "uthman"
+        user1.last_name = "betty"
+        user1.password = "nothing"
+        self.assertTrue("__class__" in user1.to_dict())
+        self.assertTrue("email" in user1.to_dict())
+        self.assertTrue("first_name" in user1.to_dict())
+        self.assertTrue("last_name" in user1.to_dict())
+        self.assertTrue("password" in user1.to_dict())
 
-    def test_ModuleDocstring(self):
-        """Testing the documentation of the module"""
-        self.assertIsNotNone(User.__doc__)
+    def test_new_instance_from_dictionary(self):
+        """
+        This method of this test class tests for exactly
+        what the name of the method reads.
+        """
+        user1 = User()
+        model_json = user1.to_dict()
+        user2 = User(**model_json)
+        self.assertFalse(user1 is user2)
 
-    def test_MethodsDocstring(self):
-        """Testing the documentation of the different methods"""
-        for doc in dir(User):
-            self.assertIsNotNone(doc.__doc__)
+    def test_new_instance_datetime_variables(self):
+        """
+        This method of this test class tests for exactly
+        what the name of the method reads.
+        """
+        user1 = User()
+        model_json = user1.to_dict()
+        user2 = User(**model_json)
+        self.assertEqual(type(user2.created_at), datetime)
+        self.assertEqual(type(user2.updated_at), datetime)
 
-    # Existence and types
-    def test_IsInstance(self):
-        """Testing the existence of the instance"""
-        self.assertIsInstance(self.inst, User)
-
-    def test_TypeId(self):
-        """Test the type of the method id"""
-        self.assertEqual(str, type(self.inst.id))
-
-    def test_File(self):
-        """The existence of the json file"""
-        self.inst.save()
-        self.assertTrue(os.path.isfile("file.json"))
-
-    def test_Attrs(self):
-        """Testing the existence of the different methods"""
-        self.assertTrue(hasattr(User, "email"))
-        self.assertTrue(hasattr(User, "password"))
-        self.assertTrue(hasattr(User, "first_name"))
-        self.assertTrue(hasattr(User, "last_name"))
-
-    def test_ClassDict(self):
-        """Testing the dictionary of the class"""
-        ClassDict = self.inst.to_dict()
-        self.assertEqual(dict, type(ClassDict))
-        self.assertIsInstance(ClassDict["created_at"], str)
-        self.assertIsInstance(ClassDict["updated_at"], str)
-
-
-if __name__ == "__main__":
-    unittest.main()
+    def test_new_instance_properties_against_old(self):
+        """
+        This method of this test class tests for exactly
+        what the name of the method reads.
+        """
+        user1 = User()
+        user1.name = "New_Instance"
+        model_json = user1.to_dict()
+        user2 = User(**model_json)
+        self.assertEqual(type(user1), type(user2))
+        self.assertEqual(user1.id, user2.id)
+        self.assertEqual(user1.email, user2.email)
+        self.assertEqual(user1.first_name, user2.first_name)
+        self.assertEqual(user1.last_name, user2.last_name)
+        self.assertEqual(user1.password, user2.password)
+        self.assertEqual(user1.name, user2.name)

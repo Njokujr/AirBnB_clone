@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# A simple script to create an executable python file with
+# a single positional arguement of the file name.
+# The file name can be prefixed with a path too.
+#
+# For example, to create a python file named
+# `base_model.py` in `models` directory:
+# $ ./create models/base_model.py
+#
+# Another example, would be to create a pyhton file
+# named `main.py` in the current directory:
+# $ ./create main.py
+#
+# The script also launch vim editor to edit the file afterwards.
+
+echo "#!/usr/bin/env python3" >> $1 && vim $1 && chmod u+x $1

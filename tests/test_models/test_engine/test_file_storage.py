@@ -1,67 +1,41 @@
-#!/usr/bin/python3
-"""
-Module of the Amenity unittest
-"""
+#!/usr/bin/env python3
+"""A unit test module for testing
+``model/engine/file_storage.py`` module."""
 
 import unittest
-from models.base_model import BaseModel
+from uuid import uuid4
 from datetime import datetime
-import os
+from models.base_model import BaseModel
 from models import storage
 from models.engine.file_storage import FileStorage
 
 
-class TestFileStorage(unittest.TestCase):
-    """
-    Test of the FileStorage class
-    """
+class Test_FileStorage(unittest.TestCase):
+    """This class tests some basic features of
+    ``FileStorage`` class."""
 
-    # Specific set up of the unittest
-    def setUp(self):
-        """Instance of the class"""
-        self.inst = FileStorage()
+    def test_all_method(self):
+        """Simple test for if ``all()`` returns a dictionary"""
+        self.assertEqual(type(storage.all()), dict)
 
-    def tearDown(self):
-        """Deleting of the instance with the proper file"""
-        del self.inst
+    def test_new_method(self):
+        """The class BaseModel uses the method ``storage.new(self, obj)``
+        from ``FileStorage`` class on creation of new class instance,
+        makes it a suitable option for this test"""
+        base1 = BaseModel()
+        fetch_all = str(storage.all())  # str() freezes the dict [1]
+        base2 = BaseModel()
+        self.assertNotEqual(fetch_all, str(storage.all()))  # [1]
 
-        try:
-            os.remove("file.json")
-        except BaseException:
-            pass
-
-    # Functionality
-    def test_AtributtesClass(self):
-        self.inst.name = "Blessing"
-        self.assertEqual(str, type(self.inst.name))
-        self.assertEqual("Blessing", self.inst.name)
-
-    # Documentation
-    def test_ModuleDocstring(self):
-        """Testing the documentation of the module"""
-        self.assertIsNotNone(FileStorage.__doc__)
-
-    def test_MethodsDocstring(self):
-        """Testing the documentation of the different methods"""
-        for doc in dir(FileStorage):
-            self.assertIsNotNone(doc.__doc__)
-
-    # Existence and types
-    def test_IsInstance(self):
-        """Testing the existence of the instance"""
-        self.assertIsInstance(self.inst, FileStorage)
-
-    def test_File(self):
-        """The existence of the json file"""
-        self.inst.save()
-        self.assertTrue(os.path.isfile("file.json"))
-
-    def test_Methods(self):
-        """Testing the existence of the different methods"""
-        self.assertTrue(hasattr(FileStorage, "__init__"))
-        self.assertTrue(hasattr(FileStorage, "__str__"))
-        self.assertTrue(hasattr(FileStorage, "save"))
-
-
-if __name__ == "__main__":
-    unittest.main()
+    def test_save_and_reload(self):
+        """
+        Tests ``save`` and ``reload`` method of the
+        FileStorage class.
+        """
+        storage.reload()
+        initial_file = str(storage.all())  # [1]
+        base1 = BaseModel()
+        storage.save()
+        storage.reload()
+        new_file = str(storage.all())  # [1]
+        self.assertNotEqual(initial_file, new_file)

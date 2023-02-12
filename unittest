@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# This simple bash scripts runs python unittesting
+# module from the current working directory.
+#
+# A simple call on the file will do:
+# $ ./unittest
+
+python3 -m unittest discover -v tests

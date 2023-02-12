@@ -1,75 +1,97 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
-Module of the State unittest
+A unit test module for testing ``models/state.py`` module.
 """
 
 import unittest
-from models.base_model import BaseModel
-from datetime import datetime
-import os
 from models.state import State
+from datetime import datetime
 
 
-class TestState(unittest.TestCase):
+class Test_State(unittest.TestCase):
     """
-    Test of the State class
+    Test the basic features of the State class.
     """
 
-    # Specific set up of the unittest
-    def setUp(self):
-        """Instance of the class"""
-        self.inst = State()
+    def test_instance_uuid_is_unique(self):
+        """
+        This method of this test class tests for exactly
+        what the name of the method reads.
+        """
+        user1 = State()
+        user2 = State()
+        self.assertNotEqual(user1.id, user2.id)
 
-    def tearDown(self):
-        """Deleting of the instance with the proper file"""
-        del self.inst
+    def test_instance_created_at_is_str(self):
+        """
+        This method of this test class tests for exactly
+        what the name of the method reads.
+        """
+        user1 = State()
+        self.assertEqual(type(user1.created_at), datetime)
+        self.assertEqual(type(user1.updated_at), datetime)
 
-        try:
-            os.remove("file.json")
-        except BaseException:
-            pass
+    def test_save_method(self):
+        """
+        This method of this test class tests for exactly
+        what the name of the method reads.
+        """
+        from time import sleep
+        user1 = State()
+        sleep(2)
+        user1.save()
+        self.assertNotEqual(user1.created_at, user1.updated_at)
 
-    # Functionality
-    def test_AtributtesClass(self):
-        self.inst.name = "Blessing"
-        self.assertEqual(str, type(self.inst.name))
-        self.assertEqual("Blessing", self.inst.name)
+    def test_string_representation(self):
+        """
+        This method of this test class tests for exactly
+        what the name of the method reads.
+        """
+        user1 = State()
+        string = "[{}] ({}) {}".format(user1.__class__.__name__,
+                                       user1.id, user1.__dict__)
+        self.assertEqual(user1.__str__(), string)
 
-    # Documentation
-    def test_ModuleDocstring(self):
-        """Testing the documentation of the module"""
-        self.assertIsNotNone(State.__doc__)
+    def test_instance_dictionary(self):
+        """
+        This method of this test class tests for exactly
+        what the name of the method reads.
+        """
+        user1 = State()
+        user1.name = "New Instance variable"
+        self.assertTrue("__class__" in user1.to_dict())
+        self.assertTrue("name" in user1.to_dict())
 
-    def test_MethodsDocstring(self):
-        """Testing the documentation of the different methods"""
-        for doc in dir(State):
-            self.assertIsNotNone(doc.__doc__)
+    def test_new_instance_from_dictionary(self):
+        """
+        This method of this test class tests for exactly
+        what the name of the method reads.
+        """
+        user1 = State()
+        model_json = user1.to_dict()
+        user2 = State(**model_json)
+        self.assertFalse(user1 is user2)
 
-    # Existence and types
-    def test_IsInstance(self):
-        """Testing the existence of the instance"""
-        self.assertIsInstance(self.inst, State)
+    def test_new_instance_datetime_variables(self):
+        """
+        This method of this test class tests for exactly
+        what the name of the method reads.
+        """
+        user1 = State()
+        model_json = user1.to_dict()
+        user2 = State(**model_json)
+        self.assertEqual(type(user2.created_at), datetime)
+        self.assertEqual(type(user2.updated_at), datetime)
 
-    def test_TypeId(self):
-        """Test the type of the method id"""
-        self.assertEqual(str, type(self.inst.id))
-
-    def TestFile(self):
-        """The existence of the json file"""
-        self.inst.save()
-        self.assertTrue(os.path.isfile("file.json"))
-
-    def test_Methods(self):
-        """Testing the existence of the different methods"""
-        self.assertTrue(hasattr(State, "name"))
-
-    def test_ClassDict(self):
-        """Testing the dictionary of the class"""
-        ClassDict = self.inst.to_dict()
-        self.assertEqual(dict, type(ClassDict))
-        self.assertIsInstance(ClassDict["created_at"], str)
-        self.assertIsInstance(ClassDict["updated_at"], str)
-
-
-if __name__ == "__main__":
-    unittest.main()
+    def test_new_instance_properties_against_old(self):
+        """
+        This method of this test class tests for exactly
+        what the name of the method reads.
+        """
+        user1 = State()
+        user1.name = "New_Instance"
+        model_json = user1.to_dict()
+        user2 = State(**model_json)
+        self.assertEqual(type(user1), type(user2))
+        self.assertEqual(user1.id, user2.id)
+        self.assertEqual(user1.name, user2.name)

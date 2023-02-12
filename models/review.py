@@ -1,15 +1,18 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
-module inherits from BaseModel
+Script containing defination of Review class
 """
 from models.base_model import BaseModel
 
 
 class Review(BaseModel):
     """
-    Review class that inherits from BaseModel
+    Defines the class City with the following list of
+    class attributes:
+    + `place_id`: string - empty string: it will be the Place.id
+    + `user_id`: string - empty string: it will be the User.id
+    + `text`: string - empty string
     """
-
-    place_id = ""
-    user_id = ""
-    text = ""
+    place_id = str()
+    user_id = str()
+    text = str()

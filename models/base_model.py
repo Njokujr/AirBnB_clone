@@ -1,51 +1,62 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
+"""
+Defines the class BaseModel being the first
+piece of the serialization/deserialization process.
+"""
 
-import uuid
 from datetime import datetime
-import models
-
-"""
-Base class for all models will contain id, created_at and updated at attributes
-"""
+import uuid
+from models import storage
 
 
 class BaseModel:
     """
-    Instantiation of class BaseModel
+    Defines all common attributes/methods
+    for other classes. This class will be the first
+    piece of the serialization/deserialization process.
     """
 
     def __init__(self, *args, **kwargs):
-        if kwargs:
+        """
+        Initialize the instance attributes.
+        """
+
+        if len(kwargs) != 0:
+            kwargs.pop('__class__', None)
             for key, value in kwargs.items():
-                if key == "created_at" or key == "updated_at":
+                if key in ["created_at", "updated_at"]:
                     value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
-                if key != "__class__":
-                    setattr(self, key, value)
+                setattr(self, key, value)
         else:
             self.id = str(uuid.uuid4())
-            self.created_at = self.updated_at = datetime.now()
-            models.storage.new(self)
+            self.created_at = datetime.now()
+            self.updated_at = self.created_at
+            storage.new(self)
 
+    # basic class methods
     def __str__(self):
         """
-        Method returns string representation
+        Return the string representation of an object.
         """
-        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
+        return "[{}] ({}) {}".format(self.__class__.__name__, self.id,
+                                     self.__dict__)
 
     def save(self):
         """
-        Method to update attribute update_at
+        Update the updated_at atrr with the current datetime,
+        and then call on the storage save method to update
+        database.
         """
         self.updated_at = datetime.now()
-        models.storage.save()
+        storage.save()
 
     def to_dict(self):
         """
-        Method to return a dict containing all key/value of __dict__ instance
+        Returns a dictionary containing all
+        keys/values of __dict__.
         """
-        dic = dict(**self.__dict__)
-        dic["__class__"] = str(type(self).__name__)
-        dic["created_at"] = self.created_at.isoformat()
-        dic["updated_at"] = self.updated_at.isoformat()
-
-        return dic
+        _dict = {"__class__": self.__class__.__name__}
+        _dict.update(self.__dict__)
+        _dict["created_at"] = self.created_at.isoformat()
+        _dict["updated_at"] = self.updated_at.isoformat()
+        return _dict

@@ -1,13 +1,14 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
-module inherits from BaseModel
+Script containing defining of Amenity class
 """
 from models.base_model import BaseModel
 
 
 class Amenity(BaseModel):
     """
-    Amenity class that inherits from BaseModel
+    Defines the class Amenity with the following list of
+    class attributes:
+    + `name`: string - empty string
     """
-
-    name = ""
+    name = str()
