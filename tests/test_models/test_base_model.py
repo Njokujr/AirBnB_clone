@@ -44,11 +44,17 @@ class Test_BaseModel(unittest.TestCase):
         what the name of the method reads.
         """
         from time import sleep
-
         base1 = BaseModel()
         sleep(2)
         base1.save()
         self.assertNotEqual(base1.created_at, base1.updated_at)
+
+    def test_BaseModel_save_method(self):
+        """
+        This method tests save method of the class
+        BaseModel.
+        """
+        BaseModel().save()
 
     def test_string_representation(self):
         """
@@ -56,9 +62,8 @@ class Test_BaseModel(unittest.TestCase):
         what the name of the method reads.
         """
         base1 = BaseModel()
-        string = "[{}] ({}) {}".format(
-            base1.__class__.__name__, base1.id, base1.__dict__
-        )
+        string = "[{}] ({}) {}".format(base1.__class__.__name__,
+                                       base1.id, base1.__dict__)
         self.assertEqual(base1.__str__(), string)
 
     def test_instance_dictionary(self):

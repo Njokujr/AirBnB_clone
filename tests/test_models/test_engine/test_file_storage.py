@@ -27,15 +27,30 @@ class Test_FileStorage(unittest.TestCase):
         base2 = BaseModel()
         self.assertNotEqual(fetch_all, str(storage.all()))  # [1]
 
-    def test_save_and_reload(self):
+    def test_save(self):
         """
-        Tests ``save`` and ``reload`` method of the
+        Tests ``save`` method of the
         FileStorage class.
         """
+        storage = FileStorage()
         storage.reload()
         initial_file = str(storage.all())  # [1]
         base1 = BaseModel()
         storage.save()
+        storage.reload()
+        new_file = str(storage.all())  # [1]
+        self.assertNotEqual(initial_file, new_file)
+
+    def test_reload(self):
+        """
+        Tests ``reload`` method of the
+        FileStorage class.
+        """
+        storage = FileStorage()
+        storage.reload()
+        initial_file = str(storage.all())  # [1]
+        base1 = BaseModel()
+        base1.save()
         storage.reload()
         new_file = str(storage.all())  # [1]
         self.assertNotEqual(initial_file, new_file)
