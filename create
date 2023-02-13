@@ -13,4 +13,4 @@
 #
 # The script also launch vim editor to edit the file afterwards.
 
-echo "#!/usr/bin/env python3" >> $1 && vim $1 && chmod u+x $1
+echo "#!/usr/bin/env python3" >> $1 && vim $1 && chmod u + x $1
