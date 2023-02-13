@@ -14,4 +14,4 @@ pycodestyle - v ./models/*.py
 pycodestyle - v ./models/engine/*.py
 pycodestyle - v ./tests/test_models/*.py
 pycodestyle - v ./tests/test_models/test_engine/*.py
-pycodestyle - v *.py
+pycodestyle - v * .py
