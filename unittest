@@ -5,4 +5,4 @@
 # A simple call on the file will do:
 # $ ./unittest
 
-python3 -m unittest discover -v tests
+python3 - m unittest discover - v tests
