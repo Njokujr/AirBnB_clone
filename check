@@ -6,7 +6,7 @@
 # A check can be run simply by doing the following command
 # from the repository root directory:
 # $ ./check
-# 
+#
 # No output means all files checked in the listed directories
 # are good.
 
